@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   
+    <script>
+        // question # 1
+
+
+//         Write a function that uses both var, let, and const to create three variables
+// with different scoping. Use a template literal to return a string explaining the
+// scopes of each variable. Test this function and print the result.
+
+
+        function greet(){
+        let name = "Roohi"
+       const wc= `Welcome ${name}`
+       console.log(wc) 
+        }
+      greet()
+
+              // question # 2
+//               Create a function called createMultiplier that takes a single parameter
+// multiplier. This function should return another function that takes a number
+// as input and returns that number multiplied by the original multiplier.
+// Demonstrate this closure by creating functions like double and triple using
+// createMultiplier and calling them with different numbers.
+
+              function createMultiplier(multiplier) {
+    return function(inputNum) {
+        return inputNum * multiplier;
+    };
+}
+
+var double = createMultiplier(2);
+var triple = createMultiplier(3);
+
+console.log(`for double ${double(4)}
+for triple ${triple(5)} 
+for 2 different numbers as input ${createMultiplier(6)(7)}`); 
+
+
+              // question # 3
+
+//               Create a function that accepts an object with properties name, age, country,
+// and city. Destructure these properties in the function parameters and set
+// default values for country and city. The function should return a string using
+// the destructured values with template literals.
+
+
+let bio ={
+    name : 'john',
+    age : 23,
+    city : 'london',
+    country : 'England'
+}
+
+let {name,age,city,country}= bio
+function display_bio(name,age,country='pakistan',city='karachi'){
+    console.log (`My name is ${name}
+    My age is ${age}
+    I live in ${city}(${country})`)
+}
+display_bio(name,age)
+
+              // question # 4
+
+
+//               Write a function called calculateTotal that takes a price and a variable
+// number of discounts as arguments (use rest parameters). Subtract each discount
+// from the price using the spread operator and return the final discounted price.
+
+
+function calculateTotal(price,...discount){
+for (let x of discount){price -= x}
+
+return price;
+
+}
+console.log("the price is 100 and after discount of 20 and then 30 we will get ",calculateTotal(100,20,30))
+
+              // question # 5
+
+
+// Create an object calculator that has two methods: add and subtract. Use
+// enhanced object literals and arrow functions to define these methods. Each
+// method should take two numbers and return the result. Test these methods by
+// calling them with different numbers.
+
+let calculator = {
+    add :(a,b) => a+b,
+    subtract :(a,b) => a-b
+}
+console.log(calculator.add(3,4));
+console.log(calculator.subtract(100,30));
+
+              // question # 6
+
+// Create an array of objects representing books with properties title, author,
+// and yearPublished. Write a function that uses a for..of loop to iterate over
+// this array and logs each book's information in a formatted string.
+const books = [
+    {title: "The Cruel prince",
+    author : "Holly Black",
+    yearPublished : 2018
+    },
+    {title: "The Queen of nothing",
+    author : "Holly Black",
+    yearPublished : 2019
+    },
+    {title: "Hamlet",
+    author : "William Shakesphere",
+    yearPublished : 1623
+    },
+    {title: "Origin of Spiecies",
+    author : "Charles Darwin",
+    yearPublished : 1859
+    }
+]
+function bookInfo(booksArray){
+    for(let book of booksArray){
+        console.log("title",book.title," author",book.author, "yearPublished",book.yearPublished);
+        
+    }
+}
+bookInfo(books)
+
+              // question # 7
+
+// Write a generator function called idGenerator that generates unique IDs
+// starting from 1. Call this generator multiple times to get unique IDs and print
+// them.
+function* idGenerator (){
+    let i = 1;
+    while(true){
+        yield i++
+    }
+}
+const gen = idGenerator();
+console.log(gen.next().value);
+console.log(gen.next().value);
+console.log(gen.next().value);
+console.log(gen.next().value);
+console.log(gen.next().value);
+
+                  // question # 9
+
+// Create an object student with properties name, age, grade, and subjects
+// (an array of subjects). Use a for..in loop to iterate over the properties of the
+// object and log each property and its value.
+
+const student = {
+    name : "Roohi",
+    age : 20,
+    grade : 12,
+    subject : ['english','maths','history','art','geography']
+}
+let txt = ""
+for(let x in student){
+    txt += student[x] + " "
+}
+ console.log(txt);
+
+                   // question # 10
+
+//  Given an array of numbers, use the map method to create a new array where
+// each element is the square of the original array elements. Print both the original
+// and the modified array. let numbers = [1, 2, 3, 4];
+
+ let number = [1,2,3,4];
+ let square = number.map(value => 
+Math.pow(value,2));
+ console.log(number);
+ console.log(square);
+ 
+                   // question # 11
+
+// Write a function operate that takes two numbers and a callback function as
+// arguments. The callback will perform a mathematical operation (e.g., addition,
+// subtraction) on the two numbers. Define separate functions for addition and
+// subtraction, and pass them as callbacks to operate.
+
+
+function add(a,b){
+return a + b ;
+}
+function subtract(a,b){
+    return a-b;
+}
+function operate(num1,num2,callback){
+console.log(add(num1,num2));
+console.log(subtract(num1,num2));
+
+}
+operate(35,10)
+
+                   // question # 12
+
+// Use setTimeout to create a function that prints "Hello, World!" after a delay of 3
+// seconds.
+const timer = setTimeout(greeting,3000)
+function greeting(){
+    console.log("Hello,World!")
+}
+
+                   // question # 13
+
+// Use setInterval to create a function that logs the current time every 2
+// seconds. After 10 seconds, clear the interval.
+
+const timer2 = setInterval(timeFunc,2000)
+function timeFunc(){
+let date = new Date()
+console.log(date)
+}
+const stopTime = setTimeout(stopTimeFunc,10000)
+function stopTimeFunc(){
+    clearInterval(timer2)
+}
+
+                       // question # 14
+
+// 14.Create a function fetchData that returns a promise. Inside the function, use
+// setTimeout to simulate a network request that resolves with a message ("Data
+// received!") after 2 seconds. Then, call fetchData and handle the response with
+// .then() and .catch().
+
+let fetchData =new Promise(function(resolve,reject){
+  setTimeout(()=>{
+    resolve("recieved data")
+  },2000)
+})
+fetchData.then(response => { 
+    console.log(response);
+     }) 
+     .catch(error => { console.log(error);})
+
+                            // question # 15
+
+    // Rewrite the fetchData function (from Question 5) using async and await.
+    //  Call this new function and log the result.
+
+let calculator2 = {
+    add: (a, b) => a + b,
+    subtract: (a, b) => a - b
+};
+
+async function performOperations() {
+    try {
+        const message = await fetchData;
+        console.log(message);
+        
+        console.log(calculator2.add(31, 49)); 
+        console.log(calculator2.subtract(100, 40)); 
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+performOperations();
+
+                       // question # 16
+// Write a function that accepts two parameters, base and exponent, and uses
+// the exponentiation operator (**) to calculate and return the result. Test this
+// function with different values.
+
+function exp(base,exponent){
+    let x = base ** exponent
+    console.log(x);
+    
+}
+exp(4,2)
+                       // question # 17
+// Define a class Animal with a constructor that accepts name and species. Add
+// a method speak that logs a message like "Dog says Woof!" Create instances of
+// this class with different animals and call the speak method for each.
+
+class Animal {
+    constructor (name,species){
+        this.name = name;
+        this.species = species;
+    }
+    speak(){
+    let sound = ""
+    switch(this.species){
+        case "Dog" :
+            sound = "Woof";
+            break
+        case "Cow":
+            sound = "Meow";
+            break
+         case "Sheep":
+            sound = "Baa";
+            break
+        case "Cow":  
+        sound ="Mooo" 
+        break
+        default :
+        sound = "Makes sound"
+    }
+    console.log(this.name +" " +this.species+" says " +sound);
+    
+}
+}
+
+
+let dog = new Animal("Bravo", "Dog");
+ let cat = new Animal("Mano", "Cat");
+ let cow = new Animal("Milli", "Cow");
+let sheep = new Animal("Bubble", "Sheep");
+dog.speak()
+cat.speak()
+cow.speak()
+sheep.speak()
+
+                       // question # 18
+
+//Create a function that checks if a number is even or odd using the ternary
+// operator. The function should return "Even" if the number is even and "Odd" if it
+// is odd. Test the function with various numbers.
+
+function numCheck(numb){
+   
+    let check = (numb%2===0) ? "Even Number" : "Odd Number"
+console.log(check);
+
+}
+numCheck(4)
+numCheck(7)
+
+// 19.Create an object user with a nested object address. The address object
+// should have a property city. Write a function to safely log the city name using
+// optional chaining, even if the address or city properties do not exist.
+
+// Create the user object with a nested address object
+const user = {
+    name: "Alice",
+    age: 30,
+    address: {
+        city: "Karachi",
+        street: "Main St"
+    }
+};
+
+function logCity(user) {
+    const city = user?.address?.city ?? "City not available";
+    console.log(city);
+}
+
+logCity(user); 
+
+
+ </script>
+<script type="module">
+
+
+
+
+
+                  // question # 8
+
+//               Create a module named mathOperations.js with functions for basic math
+// operations (add, subtract, multiply, and divide).Import these functions
+// into a new file app.js, and use them to perform calculations. Log each result.
+
+import { operation } from './mathOperation.js';
+operation(25, 5); 
+
+</script>
+
+</body>
+</html>
